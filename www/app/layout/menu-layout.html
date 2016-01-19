@@ -1,0 +1,33 @@
+<ion-side-menus>
+   <ion-pane ion-side-menu-content>
+         <ion-nav-bar class="bar-balanced">
+         <!--back button that can be sense by ion-->
+         <ion-nav-back-button class="button-clear button-icon icon ion-ios7-arrow-back"></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+               <!-- Toggle left side menu -->
+                    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            </ion-nav-buttons>
+         </ion-nav-bar>
+         <ion-nav-view name="mainContent"></ion-nav-view>
+
+   </ion-pane>
+
+
+   <ion-side-menu side="left">
+        <header class="bar bar-headeer bar-balanced">
+            <h1 class="title">Elite Scehdule</h1>
+        </header>
+           <ion-list>
+              <ion-item nav-clear ui-sref="home.leagues" menu-close>Home</ion-item>
+              <ion-item nav-clear ui-sref="app.teams" menu-close>Teams</ion-item>
+              <ion-item nav-clear ui-sref="app.standings" menu-close>Standings</ion-item>
+              <ion-item nav-clear ui-sref="app.locations" menu-close>locations</ion-item>
+              <ion-item nav-clear ui-sref="app.rules" menu-close>Rules</ion-item>
+
+           </ion-list>
+   </ion-side-menu>
+
+
+
+
+</ion-side-menus>

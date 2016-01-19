@@ -1,0 +1,14 @@
+
+<ion-view title="Leagues" ng-controller="LeaguesController">
+  <ion-content class="has-header">
+     <div class="list">
+          <a class="item item-icon-right" ng-repeat="league in leagues" ng-click="selectLeague(league.id)">
+             {{league.name}} 
+             <i class="icon ion-chevron-right icon-accessory"></i>
+          </a>
+     </div>
+  </ion-content>
+
+
+
+</ion-view>

@@ -1,0 +1,78 @@
+<ion-view title="Standings" ng-controller="StandingsController">
+   <ion-content class="has-header">
+      <div class="list">
+            <div ng-repeat  = "division in divisions">
+
+               <div class="item item-divider item-energized">{{division.divisionName}}</div>
+               <a class="item item-icon-right" ng-repeat = "standing in division.divisionStandings" href="#/app/teams/{{standing.teamId}}">
+                       <div class="row">
+                          <div class="col">
+                            <h2 class="positive">{{standing.teamName}}</h2>
+                          </div>
+                       </div>
+
+                        <div class="row">
+                            <div class="col">
+                                  <h4>wins</h4>
+                            </div>
+                            <div class="col">
+                                  <h4>Losses</h4>
+                            </div>
+                            <div class="col">
+                                  <h4>Pct</h4>
+                            </div>
+                            <div class="col">
+                                  <h4>PF</h4>
+                            </div>
+                            <div class="col">
+                                  <h4>PA</h4>
+                            </div>
+                            <div class="col">
+                                  <h4>Diff</h4>
+                            </div>
+
+
+
+                       </div>
+
+
+                        <div class="row">
+                        <div class="col">
+                                  <h5>{{standing.wins}}</h5>
+                            </div>
+                            <div class="col">
+                                  <h5>{{standing.losses}}</h5>
+                            </div>
+                            <div class="col">
+                                  <h5>{{standing.winningPct }}</h5>
+                            </div>
+                            <div class="col">
+                                  <h5>{{standing.pointsFor}}</h5>
+                            </div>
+                            <div class="col">
+                                  <h5>{{standing.pointsAgainst}}</h5>
+                            </div>
+                            <div class="col">
+                                  <h5>{{standing.pointsDiff}}</h5>
+                            </div>
+
+                       </div>
+
+                  
+
+
+
+                       <i class="icon ion-chevron-right icon-accessory"></i>
+
+                </a>
+
+
+
+
+            </div>
+
+      </div>
+   </ion-content>
+
+
+</ion-view>
