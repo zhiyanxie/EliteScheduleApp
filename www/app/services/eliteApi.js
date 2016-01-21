@@ -1,6 +1,6 @@
 'use strict';
 
-eliteApp.factory("eliteApi",function($http,$q,$ionicLoading,$timeout){
+eliteApp.factory("eliteApi",function($http,$q,$ionicLoading,$timeout,$rootScope){
     
     var currentLeagueId;
 
@@ -22,6 +22,11 @@ eliteApp.factory("eliteApi",function($http,$q,$ionicLoading,$timeout){
     	var deferred = $q.defer();
     	
         $ionicLoading.show({template: 'Loading...'});
+        console.log("getLeague Data undefeined?");
+        if (typeof currentLeagueId =="undefined"){
+            console.log("getLeague Data is undefeined");
+            currentLeagueId = $rootScope.leagueId;
+        }
 
     	$http.get("http://elite-schedule.net/api/leaguedata/"+currentLeagueId)
     	      .success(function(data,status){
@@ -30,7 +35,7 @@ eliteApp.factory("eliteApi",function($http,$q,$ionicLoading,$timeout){
                     $ionicLoading.hide();
                     //console.log("Received schedule data via HTTP",data,status);
                     deferred.resolve(data);
-                },500);
+                },50);
                 
     	      })
     	      .error(function(){
@@ -43,6 +48,7 @@ eliteApp.factory("eliteApi",function($http,$q,$ionicLoading,$timeout){
 
 
     function setLeagueId(leagueId){
+        currentLeagueId = $rootScope.leagueId;
     	currentLeagueId = leagueId;
         
     }

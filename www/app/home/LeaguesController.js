@@ -2,7 +2,7 @@
 
 eliteApp.controller("LeaguesController",
 
-    function LeaguesController($state,$scope,eliteApi){
+    function LeaguesController($state,$scope,eliteApi,$rootScope){
 
     	eliteApi.getLeagues().then(function(data){
             $scope.leagues = data;
@@ -14,6 +14,7 @@ eliteApp.controller("LeaguesController",
 
     	$scope.selectLeague = function(leagueId){
                 eliteApi.setLeagueId(leagueId);
+                $rootScope.leagueId = leagueId;
                 console.log("setleagueId complete:   "+leagueId)
                 $state.go("app.teams");
     	}

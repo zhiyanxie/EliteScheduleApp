@@ -1,9 +1,9 @@
 'use strict';
 
 
-var eliteApp = angular.module("eliteApp",["ionic",'angular-data.DSCacheFactory'])
+var eliteApp = angular.module("eliteApp",["ionic","uiGmapgoogle-maps"])
 
-.run(function($ionicPlatform,DSCacheFactory) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,23 +17,20 @@ var eliteApp = angular.module("eliteApp",["ionic",'angular-data.DSCacheFactory']
     }
 
 
-    DSCacheFactory("leagueDataCache",{ storageMode: "localStorage",maxAge: 5000,deleteOnExpire: "agressive"});
-    DSCacheFactory("leaguesCache",{ storageMode: "localStorage",maxAge: 5000,deleteOnExpire: "agressive"});
-    DSCacheFactory("myTeamsCache",{ storageMode: "localStorage"});
-    DSCacheFactory("staticCache",{ storageMode: "localStorage"});
+
 
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  
+
   $stateProvider
 
     .state('home', {
     abstract:true,
     url: '/home',
-    templateUrl: 'app/home/home.html',
-    
+    templateUrl: 'app/home/home.html'
+
   })
     .state('home.leagues', {
     url: '/leagues',
@@ -42,7 +39,7 @@ var eliteApp = angular.module("eliteApp",["ionic",'angular-data.DSCacheFactory']
         templateUrl: "app/home/leagues.html"
       }
     }
-    
+
   })
     .state('home.myteams', {
     url: '/myteams',
@@ -51,8 +48,8 @@ var eliteApp = angular.module("eliteApp",["ionic",'angular-data.DSCacheFactory']
         templateUrl: "app/home/myteams.html"
       }
     }
-    
-    
+
+
   })
 
     .state('app',{
@@ -100,6 +97,15 @@ var eliteApp = angular.module("eliteApp",["ionic",'angular-data.DSCacheFactory']
         }
       }
    })
+
+   .state("app.locationMap",{
+      url:"/locationMap/:id",
+      views:{
+        'mainContent':{
+          templateUrl: "app/locations/locationMap.html"
+        }
+      }
+   })
    .state("app.rules",{
       url:"/rules",
       views:{
@@ -107,7 +113,7 @@ var eliteApp = angular.module("eliteApp",["ionic",'angular-data.DSCacheFactory']
           templateUrl: "app/rules/rules.html"
         }
       }
-   })
+   });
 
 
   // if none of the above states are matched, use this as the fallback
